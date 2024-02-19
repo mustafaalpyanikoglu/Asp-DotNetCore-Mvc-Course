@@ -1,0 +1,39 @@
+﻿@model WebAPI.Models.Customer
+@{
+	int age = 27;
+	string value = string.Empty;
+	if (age > 18)
+	{
+		value = "Yaşlı";
+	}
+	else
+	{
+		value = "genç";
+	}
+	int Calculete(int n1, int n2)
+	{
+		return n1 + n2;
+	}
+	var result = Calculete(1, 2);
+
+	List<string> names = new() { "Alp", "Mustafa" };
+
+	foreach (var item in names)
+	{
+		<p>
+			@item
+		</p>
+	}
+
+}
+
+<p>Index</p>
+<p>Durum = @age</p>
+
+<p>Durum = @result</p>
+
+<p>@ViewBag.Name</p>
+<p> @ViewData["Name"]= @ViewData["Name"] </p>
+
+<h1>First Name = @Model.FirstName</h1>
+<h1>Age = @Model.Age</h1>
