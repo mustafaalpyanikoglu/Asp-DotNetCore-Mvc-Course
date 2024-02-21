@@ -1,39 +1,40 @@
-﻿@model WebAPI.Models.Customer
+﻿@model List<Customer>
 @{
-	int age = 27;
-	string value = string.Empty;
-	if (age > 18)
-	{
-		value = "Yaşlı";
-	}
-	else
-	{
-		value = "genç";
-	}
-	int Calculete(int n1, int n2)
-	{
-		return n1 + n2;
-	}
-	var result = Calculete(1, 2);
-
-	List<string> names = new() { "Alp", "Mustafa" };
-
-	foreach (var item in names)
-	{
-		<p>
-			@item
-		</p>
-	}
-
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h3>Customer List</h3>
 
-<p>Index</p>
-<p>Durum = @age</p>
-
-<p>Durum = @result</p>
-
-<p>@ViewBag.Name</p>
-<p> @ViewData["Name"]= @ViewData["Name"] </p>
-
-<h1>First Name = @Model.FirstName</h1>
-<h1>Age = @Model.Age</h1>
+<div class="row">
+	<div class="col-4">
+		<paragraph short-description="Alp"></paragraph>
+@* 		<partial name="_NewsPartial" model="NewsContext.List">*@	
+		@await Component.InvokeAsync("News", new {@color="blue"});
+	</div>
+	<div class="col-8">
+		<a class="btn btn-success" asp-action="Create" asp-controller="Home">Create</a>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Age</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.FirstName</td>
+						<td>@item.LastName</td>
+						<td>@item.Age</td>
+						<td>
+							<a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id">Update</a>
+							<a asp-action="Remove" asp-controller="Home" asp-route-id="@item.Id">Remove</a>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>

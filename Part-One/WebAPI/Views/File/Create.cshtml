@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Dosya İsmi:</label>
+        <input type="text" name="fileName" class="form-control"/>
+    </div>
+    <div class="form-group text-right">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+
