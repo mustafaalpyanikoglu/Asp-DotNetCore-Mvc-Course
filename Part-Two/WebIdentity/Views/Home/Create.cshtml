@@ -1,0 +1,40 @@
+﻿@model UserCreateModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Create" method="post" class="p-3 w-75 mx-auto shadow">
+    <div class="mb-3">
+        <label>Kullanıcı Adı: </label>
+        <span class="text-danger" asp-validation-for="@Model.UserName"></span>
+        <input asp-for="@Model.UserName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Şifre: </label>
+        <span class="text-danger" asp-validation-for="@Model.Password"></span>
+        <input asp-for="@Model.Password" type="password" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Şifre Tekrarı: </label>
+        <span class="text-danger" asp-validation-for="@Model.ConfirmPassword"></span>
+        <input asp-for="@Model.ConfirmPassword" type="password" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Email: </label>
+        <span class="text-danger" asp-validation-for="@Model.Email"></span>
+        <input asp-for="@Model.Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Cinsiyet: </label>
+        <span class="text-danger" asp-validation-for="@Model.Gender"></span>
+        <input asp-for="@Model.Gender" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </div>
+
+    <div class="text-danger" asp-validation-summary="ModelOnly">
+
+    </div>
+</form>
